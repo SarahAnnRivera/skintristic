@@ -1,5 +1,5 @@
 const PHASE_ONE_API =
-  "https://us-central1-frontend-simplified.cloudfunctions.net/skinstricPhaseOne";
+  "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne";
 
 export async function submitPhaseOne(name, location) {
   const response = await fetch(PHASE_ONE_API, {
