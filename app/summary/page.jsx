@@ -63,9 +63,9 @@ const topRace = analysisData
           Predicted Race & Age
         </p>
       </div>
-      <div className="absolute left-10 right-10 top-[245px] bottom-[90px] flex gap-3">
+      <div className="mt-[245px] flex flex-col gap-3 px-10 pb-[160px] md:absolute md:left-10 md:right-10 md:top-[245px] md:bottom-[90px] md:mt-0 md:flex-row md:px-0 md:pb-0">
   {/* LEFT SELECTOR */}
-  <div className="w-[175px]">
+  <div className="w-full md:w-[175px]">
     <div className="border-t border-[#1A1B1C] bg-[#1A1B1C] p-4 text-white"
     onClick={() => setActiveCategory("race")}>
       <p className="text-[12px] font-semibold uppercase">{topRace ? topRace[0].replaceAll("_", " ").toUpperCase() : ""}</p>
@@ -92,13 +92,15 @@ const topRace = analysisData
   : ""}</h2>
 
    <div
-  className="absolute bottom-8 right-8 flex h-[320px] w-[320px] items-center justify-center rounded-full"
+  className="mx-auto mt-8 flex h-[320px] w-[320px] items-center justify-center rounded-full md:absolute md:bottom-8 md:right-8 md:mt-0"
   style={{
-    background: `conic-gradient(
-      #1A1B1C ${selectedItem ? selectedItem[1] * 360 : 0}deg,
-      #D9D9D9 0deg
-    )`,
-  }}
+  "--progress": `${selectedItem ? selectedItem[1] * 360 : 0}deg`,
+  background: `conic-gradient(
+    #1A1B1C var(--progress),
+    #D9D9D9 0deg
+  )`,
+  transition: "--progress 700ms ease-in-out",
+}}
 >
   <div className="flex h-[310px] w-[310px] items-center justify-center rounded-full bg-[#F3F3F3]">
     <p className="text-[40px] font-light">
@@ -142,20 +144,26 @@ const topRace = analysisData
     </div>
   </div>
 </div>
-<p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[12px] text-[#A0A4AB]">
+<p className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 text-[12px] text-[#A0A4AB]">
   If A.I. estimate is wrong, select the correct one.
 </p>
-      <div className="absolute bottom-8 left-8">
-        <Link href="/select">
-          <SideButton direction="left">Back</SideButton>
-        </Link>
-      </div>
-      <Link href="/">
-      <div className="absolute bottom-[25%] right-8 md:bottom-8">
-          <SideButton direction="right">
-            Home
-          </SideButton>
-        </div></Link>
+   <div className="fixed bottom-[80px] left-0 right-0 z-20 flex items-center justify-between bg-white px-8 py-4 md:contents">
+
+  <div className="md:absolute md:bottom-8 md:left-8">
+    <Link href="/select">
+      <SideButton direction="left">Back</SideButton>
+    </Link>
+  </div>
+
+  <Link href="/">
+    <div className="md:absolute md:bottom-8 md:right-8">
+      <SideButton direction="right">
+        Home
+      </SideButton>
+    </div>
+  </Link>
+
+</div>
       
 
     </main>

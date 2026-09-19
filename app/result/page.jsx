@@ -7,10 +7,13 @@ import SideButton from "../../components/sideButtons";
 import { IoApertureOutline, IoImageOutline } from "react-icons/io5";
 import { useRef, useState } from "react";
 import { submitPhaseTwo } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
 export default function ResultPage() {
+    const router = useRouter();
     const fileInputRef = useRef(null);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
    const handleImageUpload = (event) => {
   const file = event.target.files[0];
@@ -19,18 +22,24 @@ export default function ResultPage() {
 
   const reader = new FileReader();
 
-  reader.onloadend = async () => {
+ reader.onloadend = async () => {
   setSelectedImage(reader.result);
+  setIsLoading(true);
 
   try {
     const data = await submitPhaseTwo(reader.result);
+
     localStorage.setItem(
-  "analysisData",
-  JSON.stringify(data.data)
-);
-console.log("PHASE TWO RESPONSE:", data);
+      "analysisData",
+      JSON.stringify(data.data)
+    );
+
+    console.log("PHASE TWO RESPONSE:", data);
+
+    router.push("/select");
   } catch (error) {
     console.error("PHASE TWO ERROR:", error);
+    setIsLoading(false);
   }
 };
 
@@ -45,23 +54,37 @@ console.log("PHASE TWO RESPONSE:", data);
       <p className="absolute left-10 top-20 text-sm font-semibold uppercase">
         To Start Analysis
       </p>
-      {selectedImage && (
+
   <div className="absolute right-8 top-20 z-50">
     <p className="mb-2 text-[12px] font-semibold uppercase">
       Preview
     </p>
 
+    <div className="h-[90px] w-[90px] border border-[#A0A4AB] md:h-[120px] md:w-[120px]">
+      {isLoading && (
+  <div className="absolute inset-0 z-[100] flex items-center justify-center bg-white">
+    <p className="text-[14px] font-semibold uppercase">
+      Preparing your analysis
+      <span className="animate-pulse">...</span>
+    </p>
+  </div>
+)}
+  {selectedImage && (
     <img
       src={selectedImage}
       alt="Selected preview"
-      className="h-[120px] w-[120px] object-cover"
+      className="h-full w-full object-cover"
     />
+  )}
+</div>
   </div>
-)}
-      <div className="absolute left-[calc(25%+20px)] top-1/2 -translate-x-1/2 -translate-y-1/2">
-  <Diamond className="absolute h-[300px] w-[300px] rotate-[8deg] animate-diamond-fast" />
-  <Diamond className="absolute h-[300px] w-[300px] rotate-[22deg] animate-diamond-medium" />
-  <Diamond className="h-[290px] w-[290px] animate-diamond-slow" />
+
+      <div className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 md:left-[calc(25%+20px)] md:top-1/2">
+ <Diamond className="absolute h-[220px] w-[220px] opacity-35 rotate-[8deg] animate-diamond-fast md:h-[300px] md:w-[300px] md:opacity-100" />
+
+<Diamond className="absolute h-[210px] w-[210px] opacity-35 rotate-[22deg] animate-diamond-medium md:h-[300px] md:w-[300px] md:opacity-100" />
+
+<Diamond className="h-[200px] w-[200px] opacity-35 animate-diamond-slow md:h-[290px] md:w-[290px] md:opacity-100" />
   <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
   <div className="flex h-[76px] w-[76px] items-center justify-center rounded-full border border-[#1A1B1C]">
     <Link href="/capture">
@@ -71,7 +94,7 @@ console.log("PHASE TWO RESPONSE:", data);
     
   </div>
 </div>
-<div className="absolute left-1/2 top-1/2 z-20 ml-[42px] -mt-[42px]">
+<div className="absolute left-1/2 top-1/2 z-20 ml-[34px] -mt-[34px]">
   <div className="relative h-[55px] w-[115px]">
     <div className="absolute bottom-0 left-0 h-px w-[55px] origin-left -rotate-45 bg-[#1A1B1C]" />
 
@@ -83,10 +106,14 @@ console.log("PHASE TWO RESPONSE:", data);
   </div>
 </div>
 </div>
-<div className="absolute right-[calc(25%+20px)] top-1/2 translate-x-1/2 -translate-y-1/2">
-  <Diamond className="absolute h-[300px] w-[300px] rotate-[8deg] animate-diamond-fast" />
-  <Diamond className="absolute h-[300px] w-[300px] rotate-[22deg] animate-diamond-medium" />
-  <Diamond className="h-[290px] w-[290px] animate-diamond-slow" />
+<div className="absolute left-1/2 top-[68%] -translate-x-1/2 -translate-y-1/2 md:left-auto md:right-[calc(25%+20px)] md:top-1/2 md:translate-x-1/2">
+  
+  
+  <Diamond className="absolute h-[220px] w-[220px] opacity-35 rotate-[8deg] animate-diamond-fast md:h-[300px] md:w-[300px] md:opacity-100" />
+
+<Diamond className="absolute h-[210px] w-[210px] opacity-35 rotate-[22deg] animate-diamond-medium md:h-[300px] md:w-[300px] md:opacity-100" />
+
+<Diamond className="h-[200px] w-[200px] opacity-35 animate-diamond-slow md:h-[290px] md:w-[290px] md:opacity-100" />
   <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
   <div
   onClick={() => { fileInputRef.current?.click();}}
@@ -110,7 +137,7 @@ console.log("PHASE TWO RESPONSE:", data);
 </div>
 </div>
 
-<div className="absolute bottom-[25%] left-8 md:bottom-8">
+<div className="absolute bottom-[10%] left-8 md:bottom-8">
   <Link href="/">
     <SideButton direction="left">
       Back

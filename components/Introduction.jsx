@@ -141,9 +141,11 @@ try {
 </div>
       {submitted && (
   <div className="absolute bottom-[25%] right-8 md:bottom-8">
+    <Link href="/result">
     <SideButton direction="right">
       Proceed
     </SideButton>
+    </Link>
   </div>
 )}
     </main>
