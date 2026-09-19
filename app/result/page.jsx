@@ -65,7 +65,11 @@ export default function ResultPage() {
   <div className="absolute inset-0 z-[100] flex items-center justify-center bg-white">
     <p className="text-[14px] font-semibold uppercase">
       Preparing your analysis
-      <span className="animate-pulse">...</span>
+      <span className="ml-1">
+  <span className="loading-dot">.</span>
+  <span className="loading-dot">.</span>
+  <span className="loading-dot">.</span>
+</span>
     </p>
   </div>
 )}

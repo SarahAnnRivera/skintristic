@@ -1,14 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { submitPhaseTwo } from "@/lib/api";
 import Header from "@/components/header";
 import Link from "next/link";
 import SideButton from "@/components/sideButtons";
+import { useRouter } from "next/navigation";
 
 export default function CapturePage() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+
+  const router = useRouter();
+const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
  
@@ -44,22 +48,39 @@ export default function CapturePage() {
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
   const image = canvas.toDataURL("image/jpeg");
+  setIsLoading(true);
 
-  try {
+ try {
   const data = await submitPhaseTwo(image);
+
   localStorage.setItem(
-  "analysisData",
-  JSON.stringify(data.data)
-);
+    "analysisData",
+    JSON.stringify(data.data)
+  );
   console.log("CAMERA PHASE TWO RESPONSE:", data);
+
+   router.push("/select");
 } catch (error) {
   console.error("CAMERA PHASE TWO ERROR:", error);
+  setIsLoading(false);
 }
 };
 
   return (
     <main className="relative min-h-screen overflow-hidden">
         <Header />
+        {isLoading && (
+  <div className="absolute inset-0 z-[100] flex items-center justify-center bg-white">
+    <p className="text-[14px] font-semibold uppercase text-[#1A1B1C]">
+      Preparing your analysis
+      <span className="ml-1">
+  <span className="loading-dot">.</span>
+  <span className="loading-dot">.</span>
+  <span className="loading-dot">.</span>
+</span>
+    </p>
+  </div>
+)}
       <video
         ref={videoRef}
         autoPlay
