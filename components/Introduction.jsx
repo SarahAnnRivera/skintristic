@@ -43,8 +43,6 @@ setLoading(true);
 
 try {
   const data = await submitPhaseOne(name, location);
-  console.log(data);
-
   setSubmitted(true);
 } catch (error) {
   setError(error.message);

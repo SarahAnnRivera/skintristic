@@ -34,8 +34,6 @@ export default function ResultPage() {
       JSON.stringify(data.data)
     );
 
-    console.log("PHASE TWO RESPONSE:", data);
-
     router.push("/select");
   } catch (error) {
     console.error("PHASE TWO ERROR:", error);
@@ -50,6 +48,23 @@ export default function ResultPage() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <Header />
+        {isLoading && (
+  <div className="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-white">
+    <p className="absolute left-1/2 top-1/2 z-[110] -translate-x-1/2 -translate-y-1/2text-[14px] font-semibold uppercase">
+      Preparing your analysis
+      <span className="ml-1">
+  <span className="loading-dot">.</span>
+  <span className="loading-dot">.</span>
+  <span className="loading-dot">.</span>
+</span>
+    </p>
+     <Diamond className="absolute h-[220px] w-[220px] opacity-35 rotate-[8deg] diamond-spin-outer md:h-[300px] md:w-[300px] md:opacity-100" />
+
+<Diamond className="absolute h-[210px] w-[210px] opacity-35 rotate-[22deg] diamond-spin-middle md:h-[300px] md:w-[300px] md:opacity-100" />
+
+<Diamond className="h-[200px] w-[200px] opacity-35 diamond-spin-inner md:h-[290px] md:w-[290px] md:opacity-100" />
+  </div>
+)}
 
       <p className="absolute left-10 top-20 text-sm font-semibold uppercase">
         To Start Analysis
@@ -61,18 +76,7 @@ export default function ResultPage() {
     </p>
 
     <div className="h-[90px] w-[90px] border border-[#A0A4AB] md:h-[120px] md:w-[120px]">
-      {isLoading && (
-  <div className="absolute inset-0 z-[100] flex items-center justify-center bg-white">
-    <p className="text-[14px] font-semibold uppercase">
-      Preparing your analysis
-      <span className="ml-1">
-  <span className="loading-dot">.</span>
-  <span className="loading-dot">.</span>
-  <span className="loading-dot">.</span>
-</span>
-    </p>
-  </div>
-)}
+    
   {selectedImage && (
     <img
       src={selectedImage}
@@ -84,11 +88,11 @@ export default function ResultPage() {
   </div>
 
       <div className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 md:left-[calc(25%+20px)] md:top-1/2">
- <Diamond className="absolute h-[220px] w-[220px] opacity-35 rotate-[8deg] animate-diamond-fast md:h-[300px] md:w-[300px] md:opacity-100" />
+ <Diamond className="absolute h-[220px] w-[220px] opacity-35 rotate-[8deg] diamond-spin-outer md:h-[300px] md:w-[300px] md:opacity-100" />
 
-<Diamond className="absolute h-[210px] w-[210px] opacity-35 rotate-[22deg] animate-diamond-medium md:h-[300px] md:w-[300px] md:opacity-100" />
+<Diamond className="absolute h-[210px] w-[210px] opacity-35 rotate-[22deg] diamond-spin-middle md:h-[300px] md:w-[300px] md:opacity-100" />
 
-<Diamond className="h-[200px] w-[200px] opacity-35 animate-diamond-slow md:h-[290px] md:w-[290px] md:opacity-100" />
+<Diamond className="h-[200px] w-[200px] opacity-35 diamond-spin-inner md:h-[290px] md:w-[290px] md:opacity-100" />
   <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
   <div className="flex h-[76px] w-[76px] items-center justify-center rounded-full border border-[#1A1B1C]">
     <Link href="/capture">
@@ -113,11 +117,11 @@ export default function ResultPage() {
 <div className="absolute left-1/2 top-[68%] -translate-x-1/2 -translate-y-1/2 md:left-auto md:right-[calc(25%+20px)] md:top-1/2 md:translate-x-1/2">
   
   
-  <Diamond className="absolute h-[220px] w-[220px] opacity-35 rotate-[8deg] animate-diamond-fast md:h-[300px] md:w-[300px] md:opacity-100" />
+  <Diamond className="absolute h-[220px] w-[220px] opacity-35 rotate-[8deg] diamond-spin-outer md:h-[300px] md:w-[300px] md:opacity-100" />
 
-<Diamond className="absolute h-[210px] w-[210px] opacity-35 rotate-[22deg] animate-diamond-medium md:h-[300px] md:w-[300px] md:opacity-100" />
+<Diamond className="absolute h-[210px] w-[210px] opacity-35 rotate-[22deg] diamond-spin-middle md:h-[300px] md:w-[300px] md:opacity-100" />
 
-<Diamond className="h-[200px] w-[200px] opacity-35 animate-diamond-slow md:h-[290px] md:w-[290px] md:opacity-100" />
+<Diamond className="h-[200px] w-[200px] opacity-35 diamond-spin-inner md:h-[290px] md:w-[290px] md:opacity-100" />
   <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
   <div
   onClick={() => { fileInputRef.current?.click();}}

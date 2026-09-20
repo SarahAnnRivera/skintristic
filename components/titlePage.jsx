@@ -37,7 +37,7 @@ export default function TitlePage() {
     skincare
   </span>
 </h1>
-      <p className="absolute bottom-8 left-8 w-[290px] text-xsm font-normal leading-5 uppercase hidden md:block">
+      <p className="absolute bottom-8 left-8 w-[290px] text-xs font-normal leading-5 uppercase hidden md:block">
   Skinstric developed an A.I. that creates a highly-personalised routine
   tailored to what your skin needs.
 </p>
@@ -81,7 +81,7 @@ export default function TitlePage() {
 </Link>
   </div>
 </div>
-<div className="absolute top-[58%] left-1/2 flex -translate-x-1/2 items-center gap- md:hidden">
+<div className="absolute top-[58%] left-1/2 flex -translate-x-1/2 items-center md:hidden">
   <Link href="/testing">
   <div className="flex items-center gap-2">
     <span className="whitespace-nowrap text-sm font-semibold uppercase">

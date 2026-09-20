@@ -66,19 +66,31 @@ const topRace = analysisData
       <div className="mt-[245px] flex flex-col gap-3 px-10 pb-[160px] md:absolute md:left-10 md:right-10 md:top-[245px] md:bottom-[90px] md:mt-0 md:flex-row md:px-0 md:pb-0">
   {/* LEFT SELECTOR */}
   <div className="w-full md:w-[175px]">
-    <div className="border-t border-[#1A1B1C] bg-[#1A1B1C] p-4 text-white"
+    <div className={`border-t border-[#1A1B1C] p-4 cursor-pointer ${
+  activeCategory === "race"
+    ? "bg-[#1A1B1C] text-white"
+    : "bg-[#E8E8E8] text-[#1A1B1C]"
+}`}
     onClick={() => setActiveCategory("race")}>
       <p className="text-[12px] font-semibold uppercase">{topRace ? topRace[0].replaceAll("_", " ").toUpperCase() : ""}</p>
       <p className="mt-8 text-[12px] font-semibold uppercase">Race</p>
     </div>
 
-    <div className="mt-2 border-t border-[#1A1B1C] bg-[#E8E8E8] p-4"
+    <div className={`mt-2 border-t border-[#1A1B1C] p-4 cursor-pointer ${
+  activeCategory === "age"
+    ? "bg-[#1A1B1C] text-white"
+    : "bg-[#E8E8E8] text-[#1A1B1C]"
+}`}
     onClick={() => setActiveCategory("age")}>
       <p className="text-[12px] font-semibold">{topAge ? topAge[0] : ""}</p>
       <p className="mt-8 text-[12px] font-semibold uppercase">Age</p>
     </div>
 
-    <div className="mt-2 border-t border-[#1A1B1C] bg-[#F1F1F1] p-4"
+    <div className={`mt-2 border-t border-[#1A1B1C] p-4 cursor-pointer ${
+  activeCategory === "gender"
+    ? "bg-[#1A1B1C] text-white"
+    : "bg-[#F1F1F1] text-[#1A1B1C]"
+}`}
     onClick={() => setActiveCategory("gender")}>
       <p className="text-[12px] font-semibold uppercase">{topGender ? topGender[0].toUpperCase() : ""}</p>
       <p className="mt-8 text-[12px] font-semibold uppercase">Sex</p>
@@ -92,7 +104,8 @@ const topRace = analysisData
   : ""}</h2>
 
    <div
-  className="mx-auto mt-8 flex h-[320px] w-[320px] items-center justify-center rounded-full md:absolute md:bottom-8 md:right-8 md:mt-0"
+  className="mx-auto mt-8 flex h-[260px] w-[260px] sm:h-[300px] sm:w-[300px] items-center justify-center rounded-full lg:absolute 
+  lg:bottom-8 lg:right-8 lg:mt-0"
   style={{
   "--progress": `${selectedItem ? selectedItem[1] * 360 : 0}deg`,
   background: `conic-gradient(
@@ -102,7 +115,7 @@ const topRace = analysisData
   transition: "--progress 700ms ease-in-out",
 }}
 >
-  <div className="flex h-[310px] w-[310px] items-center justify-center rounded-full bg-[#F3F3F3]">
+  <div className="flex h-[250px] w-[250px] sm:h-[290px] sm:w-[290px] items-center justify-center rounded-full bg-[#F3F3F3]">
     <p className="text-[40px] font-light">
       {selectedItem
         ? `${(selectedItem[1] * 100).toFixed(0)}%`
@@ -113,7 +126,7 @@ const topRace = analysisData
   </div>
 
   {/* RIGHT CONFIDENCE */}
-  <div className="w-[375px] border-t border-[#1A1B1C] bg-[#F5F5F5]">
+  <div className="w-full md:w-[375px] border-t border-[#1A1B1C] bg-[#F5F5F5]">
     <div className="flex justify-between p-4 text-[12px] uppercase">
       <span>{activeCategory === "gender"
   ? "SEX"

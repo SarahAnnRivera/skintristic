@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Link from "next/link";
 import SideButton from "@/components/sideButtons";
 import { useRouter } from "next/navigation";
+import Diamond from "@/components/diamonds";
 
 export default function CapturePage() {
   const videoRef = useRef(null);
@@ -57,7 +58,6 @@ const [isLoading, setIsLoading] = useState(false);
     "analysisData",
     JSON.stringify(data.data)
   );
-  console.log("CAMERA PHASE TWO RESPONSE:", data);
 
    router.push("/select");
 } catch (error) {
@@ -70,8 +70,8 @@ const [isLoading, setIsLoading] = useState(false);
     <main className="relative min-h-screen overflow-hidden">
         <Header />
         {isLoading && (
-  <div className="absolute inset-0 z-[100] flex items-center justify-center bg-white">
-    <p className="text-[14px] font-semibold uppercase text-[#1A1B1C]">
+  <div className="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-white">
+    <p className="absolute left-1/2 top-1/2 z-[110] -translate-x-1/2 -translate-y-1/2 text-[14px] font-semibold uppercase text-[#1A1B1C]">
       Preparing your analysis
       <span className="ml-1">
   <span className="loading-dot">.</span>
@@ -79,6 +79,11 @@ const [isLoading, setIsLoading] = useState(false);
   <span className="loading-dot">.</span>
 </span>
     </p>
+     <Diamond className="absolute h-[220px] w-[220px] opacity-35 rotate-[8deg] diamond-spin-outer md:h-[300px] md:w-[300px] md:opacity-100" />
+
+<Diamond className="absolute h-[210px] w-[210px] opacity-35 rotate-[22deg] diamond-spin-middle md:h-[300px] md:w-[300px] md:opacity-100" />
+
+<Diamond className="h-[200px] w-[200px] opacity-35 diamond-spin-inner md:h-[290px] md:w-[290px] md:opacity-100" />
   </div>
 )}
       <video

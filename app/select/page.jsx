@@ -31,9 +31,12 @@ export default function SelectPage() {
 
   <div className="relative grid h-[280px] w-[280px] grid-cols-3 grid-rows-3 place-items-center">
         <Diamond
-  className={`pointer-events-none absolute h-[470px] w-[470px]
-    transition-opacity duration-300
-    ${showDiamond ? "opacity-100" : "opacity-0"}`}
+  className={`pointer-events-none absolute
+  h-[300px] w-[300px]
+  sm:h-[360px] sm:w-[360px]
+  md:h-[470px] md:w-[470px]
+  transition-opacity duration-300
+  ${showDiamond ? "opacity-100" : "opacity-0"}`}
  />
   <div className="col-start-2 row-start-1 z-10 h-[125px] w-[125px] rotate-45 bg-[#D9D9D9] transition-transform duration-300 hover:scale-110"
   onMouseEnter={() => setShowDiamond(true)}
