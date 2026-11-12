@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Skinstric AI — Skincare Analysis Application
 
-First, run the development server:
+**A responsive AI-powered skincare analysis interface built with Next.js and TypeScript.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Skinstric AI is a frontend application developed during a remote development internship. The project integrates a third-party AI analysis API with an interactive user interface, guiding users through image submission, processing, and results.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Overview
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The application demonstrates the integration of external AI services into a responsive web experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Development focused on building a clear user journey, managing asynchronous API interactions, and providing appropriate feedback throughout the analysis process.
 
-## Learn More
+## Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Image Submission:** Users can capture or upload an image for analysis.
+- **AI API Integration:** Connects the frontend to a third-party analysis service.
+- **Loading States:** Provides visual feedback while requests are processing.
+- **Error Handling:** Communicates unsuccessful requests and other issues to users.
+- **Responsive Interface:** Supports different screen sizes and devices.
+- **Component-Based Architecture:** Uses reusable components to organize the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Category | Technologies |
+|---|---|
+| Framework | Next.js |
+| Language | TypeScript |
+| Frontend | React |
+| API Integration | Third-party AI analysis API |
+| Deployment | Vercel |
 
-## Deploy on Vercel
+## Technical Highlights
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+During this project, I gained practical experience with:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Developing responsive interfaces using Next.js and TypeScript.
+- Integrating an external API into a frontend application.
+- Managing asynchronous requests and response states.
+- Implementing image capture and upload functionality.
+- Handling loading, error, and processing states.
+- Testing and refining the user journey for a smoother experience.
+- Deploying a frontend application through Vercel.
+
+## Project Background
+
+This application was developed as part of a remote frontend development internship with Skinstric AI.
+
+The project provided experience working with an established product concept, translating functional requirements into frontend components, and integrating an external service into a user-facing workflow.
+
+## Live Demo
+
+(https://skintristic.vercel.app/)
+
+## Developer
+
+**Sarah Rivera Balcazar**
+
+[GitHub](https://github.com/SarahAnnRivera) | [Portfolio](https://portfolio-resume-one-psi.vercel.app/)
